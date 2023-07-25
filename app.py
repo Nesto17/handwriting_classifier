@@ -39,28 +39,18 @@ word_dict = {
     25:'Z'
 }
 
-drawing_mode = st.sidebar.selectbox(
-    "Drawing tool:", ("freedraw", "point", "line", "rect", "circle", "transform")
-)
-
 stroke_width = st.sidebar.slider("Stroke width: ", 30, 50, 30)
-if drawing_mode == 'point':
-    point_display_radius = st.sidebar.slider("Point display radius: ", 1, 25, 3)
-bg_color = st.sidebar.color_picker("Background color hex: ", "#fff")
-
-realtime_update = st.sidebar.checkbox("Update in realtime", True)
 
 # Create a canvas component
 canvas_result = st_canvas(
-    fill_color="rgba(255, 165, 0, 0.3)",  # Fixed fill color with some opacity
+    fill_color="rgba(255, 165, 0, 0.3)",
     stroke_width=stroke_width,
     stroke_color="#000",
-    background_color=bg_color,
-    update_streamlit=realtime_update,
+    background_color="#fff",
+    update_streamlit=True,
     height=400,
     width=400,
-    drawing_mode=drawing_mode,
-    point_display_radius=point_display_radius if drawing_mode == 'point' else 0,
+    drawing_mode="freedraw",
     key="canvas",
 )
 
